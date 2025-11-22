@@ -12,7 +12,7 @@
         .stage {
             position: fixed;
             bottom: 0;
-            right: 20;
+            right: 20px;
             margin-right: 20px;
             transform: scale(0.2);
             transform-origin: bottom right;

@@ -13,7 +13,7 @@
             position: fixed;
             bottom: 0;
             right: 0;
-            margin-right: 20px;
+            margin-right: 40px;
             transform: scale(0.2);
             transform-origin: bottom right;
             display: flex;

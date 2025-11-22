@@ -12,9 +12,8 @@
         .stage {
             position: fixed;
             bottom: 0;
-            right: 0;
-            margin-bottom: 20px;
-            margin-right: 40px;
+            right: 20;
+            margin-right: 20px;
             transform: scale(0.2);
             transform-origin: bottom right;
             display: flex;

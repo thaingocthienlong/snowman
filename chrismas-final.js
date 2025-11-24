@@ -2,8 +2,6 @@
     /* ------------------------------------------------
        PART 1: Load the Lottie Library
        ------------------------------------------------
-       We inject the script tag dynamically. This is the 
-       exact library version you confirmed works.
     */
     const lottieScript = document.createElement('script');
     lottieScript.src = "https://unpkg.com/@lottiefiles/dotlottie-wc@0.7.1/dist/dotlottie-wc.js";
@@ -48,6 +46,14 @@
             z-index: 99999;
             pointer-events: none; /* Click through */
             display: flex;
+        }
+
+        /* --- MOBILE DETECTION (Added Here) --- */
+        /* If screen width is 768px or less (Tablets & Phones) */
+        @media (max-width: 768px) {
+            .stage, .santa-stage {
+                bottom: 41px !important;
+            }
         }
 
         /* --- Snowman Animations --- */
@@ -212,7 +218,6 @@
         const santaStage = document.createElement("div");
         santaStage.classList.add("santa-stage");
         
-        // Using the EXACT tag that worked for you
         santaStage.innerHTML = `
             <dotlottie-wc 
                 src="https://lottie.host/6cb89641-7e51-4225-a5cc-e28087987317/PIJeyNngv1.lottie" 

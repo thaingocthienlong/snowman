@@ -27,9 +27,8 @@
         .stage {
             position: fixed;
             bottom: 0;
-            right: 0;
+            right: 30px;
             margin-right: 20px;
-            margin-bottom: 10px;
             transform: scale(0.2);
             transform-origin: bottom right;
             display: flex;
@@ -42,10 +41,10 @@
         /* --- SANTA LOTTIE (Bottom Left) --- */
         .santa-stage {
             position: fixed;
-            bottom: 0;
+            bottom: -14px;
             left: 0;
-            margin-left: 10px;
-            margin-bottom: 10px;
+            margin-left: 0;
+            margin-bottom: 0;
             z-index: 99999;
             pointer-events: none; /* Click through */
             display: flex;

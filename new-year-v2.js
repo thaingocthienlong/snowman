@@ -100,10 +100,14 @@
     }
 
     // Start the rain
-    setInterval(createLixi, 260); // Create a new envelope every 260ms
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const intervalTime = isMobile ? 600 : 300;
+
+    setInterval(createLixi, intervalTime);
 
     // Initial batch
-    for (let i = 0; i < 12; i++) {
+    const initialCount = isMobile ? 6 : 12; // Reduce initial batch for mobile too
+    for (let i = 0; i < initialCount; i++) {
         setTimeout(createLixi, i * 120);
     }
 })();

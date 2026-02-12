@@ -77,12 +77,17 @@
 
         const lixi = document.createElement('div');
         lixi.className = 'lixi';
-        const size = Math.random() * 6 + 12; // Size between 12px and 18px
-        const duration = Math.random() * 3 + 4; // Duration between 4s and 7s
+
+        // Reduced size by 20% (Original: 12-18px -> New: ~9.6-14.4px)
+        const size = Math.random() * 4.8 + 9.6;
+
+        // Slower speed by 20% means duration increases by 25% (1/0.8 = 1.25)
+        // Original: 4-7s -> New: 5-8.75s
+        const duration = Math.random() * 3.75 + 5;
 
         lixi.style.left = Math.random() * 100 + '%';
         lixi.style.width = size + 'px';
-        lixi.style.height = size * 1.4 + 'px';
+        lixi.style.height = size * 1.4 + 'px'; // Maintain aspect ratio
         lixi.style.opacity = Math.random() * 0.4 + 0.5;
         lixi.style.animation = `lixi-fall ${duration}s linear infinite`;
 

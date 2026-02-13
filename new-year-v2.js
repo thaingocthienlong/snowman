@@ -45,7 +45,7 @@
     script.onload = () => {
         // 1.2 Inject Lottie Element after script loads
         const lottie = document.createElement('dotlottie-wc');
-        lottie.setAttribute('src', 'https://lottie.host/ca3d6ffe-4ca3-43a9-9aa4-7c580d22f9ce/t5nofTbUxp.lottie');
+        lottie.setAttribute('src', 'https://lottie.host/1ed884c2-a5cb-4e6c-8ae4-51b4d9b1919d/Z811RwMv35.lottie');
         lottie.setAttribute('autoplay', '');
         lottie.setAttribute('loop', '');
 

@@ -1,0 +1,113 @@
+(function () {
+    // 1. Inject CSS
+    const style = document.createElement('style');
+    style.innerHTML = `
+    #lixi-container {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        overflow: hidden;
+    }
+    .lixi {
+        position: absolute;
+        width: 14px;
+        height: 20px;
+        background: linear-gradient(180deg, #d63031, #c0392b);
+        border-radius: 3px;
+        box-shadow: 0 4px 10px rgba(214, 48, 49, 0.4);
+        animation: lixi-fall linear infinite;
+    }
+    .lixi::after {
+        content: "福";
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: bold;
+        color: #f1c40f;
+    }
+    @keyframes lixi-fall {
+        from { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    `;
+    document.head.appendChild(style);
+
+    // 1.1 Inject Lottie Player Script
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js';
+    script.type = 'module';
+
+    script.onload = () => {
+        // 1.2 Inject Lottie Element after script loads
+        const lottie = document.createElement('dotlottie-wc');
+        lottie.setAttribute('src', 'https://lottie.host/267c8f8d-cae6-4f18-b779-6b8c6e4d7254/1TdMLz7bP6.lottie');
+        lottie.setAttribute('autoplay', '');
+        lottie.setAttribute('loop', '');
+
+        // Also set properties to be safe
+        // lottie.src = ...; // Not needed if attributes work, but safe to trust attributes if element is upgraded
+
+        lottie.style.position = 'fixed';
+        lottie.style.top = '0';
+        lottie.style.right = '0';
+        lottie.style.width = '150px';
+        lottie.style.height = '150px';
+        lottie.style.zIndex = '9999';
+        lottie.style.pointerEvents = 'none';
+        document.body.appendChild(lottie);
+    };
+
+    document.head.appendChild(script);
+
+    // 2. Inject HTML Container
+    const container = document.createElement('div');
+    container.id = 'lixi-container';
+    document.body.appendChild(container);
+
+    // 3. Animation Logic
+    const lixiContainer = document.getElementById('lixi-container');
+
+    function createLixi() {
+        if (!lixiContainer) return;
+
+        const lixi = document.createElement('div');
+        lixi.className = 'lixi';
+
+        // Reduced size by 20% (Original: 12-18px -> New: ~9.6-14.4px)
+        const size = Math.random() * 4.8 + 9.6;
+
+        // Slower speed by 20% means duration increases by 25% (1/0.8 = 1.25)
+        // Original: 4-7s -> New: 5-8.75s
+        const duration = Math.random() * 3.75 + 5;
+
+        lixi.style.left = Math.random() * 100 + '%';
+        lixi.style.width = size + 'px';
+        lixi.style.height = size * 1.4 + 'px'; // Maintain aspect ratio
+        lixi.style.opacity = Math.random() * 0.4 + 0.5;
+        lixi.style.animation = `lixi-fall ${duration}s linear infinite`;
+
+        lixiContainer.appendChild(lixi);
+
+        // Remove after animation completes
+        setTimeout(() => {
+            lixi.remove();
+        }, (duration + 1) * 1000);
+    }
+
+    // Start the rain
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const intervalTime = isMobile ? 600 : 300;
+
+    setInterval(createLixi, intervalTime);
+
+    // Initial batch
+    const initialCount = isMobile ? 6 : 12; // Reduce initial batch for mobile too
+    for (let i = 0; i < initialCount; i++) {
+        setTimeout(createLixi, i * 120);
+    }
+})();

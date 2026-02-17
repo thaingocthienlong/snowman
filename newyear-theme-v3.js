@@ -647,7 +647,7 @@
             lottie.setAttribute('autoplay', '');
             lottie.setAttribute('loop', '');
             Object.assign(lottie.style, {
-                position: 'fixed', top: '0', right: '-4',
+                position: 'fixed', top: '0', right: '-4px',
                 width: '150px', height: '150px', zIndex: '9999', pointerEvents: 'none'
             });
             document.body.appendChild(lottie);
